@@ -15,18 +15,6 @@ import javalib.worldimages.*;
 import java.util.Comparator;
 import java.util.LinkedList;
 
-/*
- * CONTROLS:
- * R = RESTART
- * N = NEW MAZE
- * D = DFS SEARCH
- * B = BFS SEARCH
- * 
- * **TO COMPARE BFS AND DFS, PERFORM ONE, PRESS R, THEN PERFORM THE OTHER**
- * 
- * **TO TOGGLE ANIMATING KNOCKING DOWN MAZE WALLS AT THE BEGINNING OF THE GAME:
- * ctrl + f "boolean MakeMazeOnTick" and change it to true
- */
 
 // to represent a Cell
 class Cell {
@@ -140,8 +128,8 @@ class Edge {
 
 // to represent a Maze
 class MazeWorld extends World {
-	static int MAZE_WIDTH = 50; // # of cells wide the maze is
-	static int MAZE_HEIGHT = 50; // # of cells tall the maze is
+	static int MAZE_WIDTH = 30; // # of cells wide the maze is
+	static int MAZE_HEIGHT = 30; // # of cells tall the maze is
 	List<List<Cell>> cells;
 	List<Edge> allEdges;
 	List<Edge> master = new ArrayList<Edge>();
@@ -467,7 +455,7 @@ class MazeWorld extends World {
 			}
 
 			// creates gradient
-			this.searchCurr.color = new Color(col, 0, 255 - col);
+			this.searchCurr.color = new Color(255 - col, 0, col);
 
 			// System.out.println(this.searchCurr.stepsToEnd);
 
@@ -1044,6 +1032,6 @@ class ExamplesMaze {
 			maze.makeMaze();
 		}
 
-		maze.bigBang(MazeWorld.MAZE_WIDTH * Cell.size + 300, MazeWorld.MAZE_HEIGHT * Cell.size, 1 / 10000.0);
+		maze.bigBang(MazeWorld.MAZE_WIDTH * Cell.size + 300, MazeWorld.MAZE_HEIGHT * Cell.size, 1 / 100000.0);
 	}
 }
